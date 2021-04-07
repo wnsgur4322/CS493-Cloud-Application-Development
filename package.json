@@ -1,0 +1,22 @@
+{
+  "name": "cs493-cloud-application-development",
+  "version": "1.0.0",
+  "description": "CS493 class demos",
+  "main": "hello.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wnsgur4322/CS493-Cloud-Application-Development.git"
+  },
+  "author": "Derek Jeong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wnsgur4322/CS493-Cloud-Application-Development/issues"
+  },
+  "homepage": "https://github.com/wnsgur4322/CS493-Cloud-Application-Development#readme",
+  "dependencies": {
+    "figlet": "^1.5.0"
+  }
+}
