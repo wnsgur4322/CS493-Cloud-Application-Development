@@ -1,0 +1,13 @@
+[
+        {
+                "name": "Lodging 1",
+                "description": "house type lodge",
+                "price": 128
+        },
+        {
+                "name": "Lodging 2",
+                "description": "basement type lodge",
+                "price": 111
+        }
+
+]
