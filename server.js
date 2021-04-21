@@ -1,20 +1,72 @@
 // week 3 - monday
 
 const express = require('express');
+const mysqlPool = require('./lib/mysqlPool');
 const logger = require('./logger');
 
 const app = express();
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8080;
 
 // can use also require('./lodgings.json')
-const lodgings = require('./lodgings');
+//const lodgings = require('./lodgings');
 
 app.use(express.json());
 
 app.use(logger);
 
-app.get('/lodgings', (req, res, next) => {
-        res.status(200).send(lodgings);
+/*
+*       SELECT COUNT(*) FROM lodgings;
+*/
+async function getLodgingsCount() {
+        const [ results ] = await mysqlPool.query(
+                "SELECT COUNT(*) AS count FROM lodgings");
+        console.log(" -- results:", results);
+        return results[0].count;
+}
+
+/*
+*       SELECT * FROM lodgings ORDER BY id LIMIT <offset>, <pageSize>
+*/
+async function getLodgingsPage(page) {
+        const count = await getLodgingsCount();
+        const pageSize = 10;
+        const lastPage = Math.ceil(count / pageSize);
+        page = page > lastPage ? lastPage : page;
+        page = page < 1 ? 1 : page;     // if page < 1, then page is 1
+        const offset = (page - 1) * pageSize;
+
+        /*
+        *       offset = "; DROP TABLES *;"
+        */
+        const [ results ] = await mysqlPool.query(
+                //"SELECT * FROM lodgings ORDER BY id LIMIT " + offset + "," + pageSize
+                // ? is placeholder, this way is better then above one
+                "SELECT * FROM lodgings ORDER BY id LIMIT ?,?", 
+                [ offset, pageSize ]
+        );
+        
+        return {
+                lodgings: results,
+                page: page,
+                totalPages: lastPage,
+                pageSize: pageSize,
+                count: count
+        };
+}
+
+app.get('/lodgings', async (req, res) => {
+        try {
+                const lodgingsPage = await getLodgingsPage(
+                        parseInt(req.query.page) || 1 
+                );
+                res.status(200).send(lodgingsPage);
+
+        } catch (err) {
+                console.error(" -- error:", err);
+                res.status(500).send({
+                        err: "Error fetching lodgings page from DB. Try again later."
+                });
+        }
 
 });
 

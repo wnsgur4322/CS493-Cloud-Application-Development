@@ -19,7 +19,8 @@
   "homepage": "https://github.com/wnsgur4322/CS493-Cloud-Application-Development#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "figlet": "^1.5.0"
+    "figlet": "^1.5.0",
+    "mysql2": "^2.2.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
