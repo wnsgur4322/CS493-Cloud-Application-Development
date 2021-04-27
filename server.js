@@ -3,6 +3,8 @@
 const express = require('express');
 const mysqlPool = require('./lib/mysqlPool');
 const logger = require('./logger');
+const { validateAgainstSchema } = require('./lib/validation');
+const { LodgingSchema } = require('./models/lodging');
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -52,6 +54,19 @@ async function getLodgingsPage(page) {
                 pageSize: pageSize,
                 count: count
         };
+}
+exports.getLodgingsPage = getLodgingsPage;
+
+/*
+ * INSERT INTO lodgings SET ...;
+ */
+async function insertNewLodging(lodging) {
+        lodging = extractValidFields(lodging, LodgingSchema);
+        const [ result ] = await mysqlPool.query(
+                "INSERT INTO lodgings SET ? ",
+                lodging
+        );
+        return result.insertId;
 }
 
 app.get('/lodgings', async (req, res) => {
