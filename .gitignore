@@ -2,3 +2,4 @@ node_modules/
 ./rate-limiting/node_modules/
 ./file-storage/node_modules/
 ./file-storage/uploads/
+./offline-work/node_modules/
