@@ -4,7 +4,7 @@
 
 const { MongoClient } = require('mongodb');
 
-const mongoHost = process.env.MONGO_HOST;
+const mongoHost = process.env.MONGO_HOST || 'localhost';
 const mongoPort = process.env.MONGO_PORT || 27017;
 const mongoUser = process.env.MONGO_USER;
 const mongoPassword = process.env.MONGO_PASSWORD;
@@ -15,7 +15,7 @@ const mongoUrl = `mongodb://${mongoUser}:${mongoPassword}@${mongoHost}:${mongoPo
 let db = null;
 
 exports.connectToDB = function (callback) {
-  MongoClient.connect(mongoUrl, { useNewUrlParser: true }, (err, client) => {
+  MongoClient.connect(mongoUrl, { useUnifiedTopology: true }, (err, client) => {
     db = client.db(mongoDBName);
     callback();
   });

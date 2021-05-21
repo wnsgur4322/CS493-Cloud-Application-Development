@@ -1,6 +1,6 @@
 const amqp = require('amqplib');
 
-const rabbitmqHost = process.env.RABBITMQ_HOST;
+const rabbitmqHost = process.env.RABBITMQ_HOST || 'localhost';
 const rabbitmqUrl = `amqp://${rabbitmqHost}`;
 
 let connection = null;

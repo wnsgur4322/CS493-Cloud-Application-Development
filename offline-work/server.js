@@ -4,6 +4,7 @@ const crypto = require('crypto');
 const fs = require('fs/promises');
 
 const { connectToDB } = require('./lib/mongo');
+const { connectToRabbitMQ, getChannel } = require('./lib/rabbitmq');
 const {
   getImageInfoById,
   saveImageFile,
@@ -44,6 +45,9 @@ app.post('/images', upload.single('image'), async (req, res, next) => {
       };
       const id = await saveImageFile(image);
       await fs.unlink(req.file.path);
+
+      const channel = getChannel();
+      channel.sendToQueue('images', Buffer.from(id.toString()));
       res.status(200).send({ id: id });
     } catch (err) {
       next(err);
@@ -103,7 +107,8 @@ app.use('*', (req, res, next) => {
   });
 });
 
-connectToDB(() => {
+connectToDB( async () => {
+  await connectToRabbitMQ('images');
   app.listen(port, () => {
     console.log("== Server is running on port", port);
   });
