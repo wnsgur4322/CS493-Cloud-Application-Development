@@ -70,3 +70,16 @@ exports.updateImageSizeById = async function (id, size) {
     );
     return result.matchedCount > 0;
   }};
+
+exports.updateImageDimensionsById = async function (id, dimensions) {
+  const db = getDBReference();
+  const collection = db.collection('images.files');
+  if (!ObjectId.isValid(id)) {
+    return null;
+  } else {
+    const result = await collection.updateOne(
+      { _id: new ObjectId(id) },
+      { $set: { "metadata.dimensions": dimensions }}
+    );
+    return result.matchedCount > 0;
+  }};

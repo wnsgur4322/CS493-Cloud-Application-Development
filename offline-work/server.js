@@ -67,7 +67,8 @@ app.get('/images/:id', async (req, res, next) => {
         _id: image._id,
         url: `/media/images/${image.filename}`,
         contentType: image.metadata.contentType,
-        userId: image.metadata.userId
+        userId: image.metadata.userId,
+        dimensions: image.metadata.dimensions
       };
       res.status(200).send(responseBody);
     } else {
