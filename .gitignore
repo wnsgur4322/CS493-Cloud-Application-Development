@@ -3,3 +3,4 @@ node_modules/
 ./file-storage/node_modules/
 ./file-storage/uploads/
 ./offline-work/node_modules/
+./graphql-api-server/node_modules/

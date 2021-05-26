@@ -1,0 +1,29 @@
+{
+  "name": "graphql-api-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osu-cs493-sp21/graphql-api-server.git"
+  },
+  "author": "Hess <hessro@oregonstate.edu>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/osu-cs493-sp21/graphql-api-server/issues"
+  },
+  "homepage": "https://github.com/osu-cs493-sp21/graphql-api-server#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "apollo-datasource": "^0.9.0",
+    "apollo-server-express": "^2.24.1",
+    "express": "^4.17.1",
+    "graphql": "^15.5.0"
+  }
+}
