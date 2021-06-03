@@ -1,23 +1,22 @@
 const { DataSource } = require('apollo-datasource');
 
 class PostsAPI extends DataSource {
-        constrcutor({ data }) {
-                super();
-                this.data = data;
-        }
+  constructor({ data }) {
+    super();
+    this.data = data;
+  }
 
-        getAllPosts() {
-                return this.data || [];
-        }
+  getAllPosts() {
+    return this.data || [];
+  }
 
-        getPostById({ postId }) {
-                return this.data.find(post => post.id === postId);
+  getPostById({ postId }) {
+    return this.data.find(post => post.id === postId);
+  }
 
-        }
-
-        getPostsByAuthorId({ authorId }) {
-                return this.data.filter(post => post.authorId === authorId);
-        }
+  getPostsByAuthorId({ authorId }) {
+    return this.data.filter(post => post.authorId === authorId);
+  }
 }
 
 module.exports = PostsAPI;
