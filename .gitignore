@@ -4,3 +4,8 @@ node_modules/
 ./file-storage/uploads/
 ./offline-work/node_modules/
 ./graphql-api-server/node_modules/
+./assignments/*/node_modules/
+./assignments/*/uploads/
+./using-mongodb/node_modules/
+./using-mysql/node_modules/
+./auth/node_modules/

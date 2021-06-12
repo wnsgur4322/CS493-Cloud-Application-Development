@@ -1,0 +1,18 @@
+[
+        {
+                "username": "fake1",
+                "firstname": "Jane",
+                "lastname": "Doe",
+                "owned_businesses": ["mod pizza"], 
+                "photos": {},
+                "reviews": {}
+        },
+        {
+                "username": "fake2",
+                "firstname": "James",
+                "lastname": "Smith",
+                "owned_businesses": ["sugoi sushi"],  
+                "photos": {},
+                "reviews": {}
+        }   
+]

@@ -1,0 +1,28 @@
+[
+        {
+                "owner": "fake1",
+                "name": "mod pizza",
+                "address": "123 fake avenue",
+                "city": "Corvallis",
+                "state": "Oregon",
+                "zip": "97330",
+                "phone": "5411234567",
+                "category": "restaurant",
+                "subcategory": "pizza",
+                "photos": {},
+                "reviews": {}
+        },
+        {
+                "owner": "fake2",
+                "name": "sugoi sushi",
+                "address": "456 fake blvd",
+                "city": "Corvallis",
+                "state": "Oregon",
+                "zip": "97330",
+                "phone": "5413334455",
+                "category": "restaurant",
+                "subcategory": "sushi",
+                "photos": {},
+                "reviews": {}
+        }
+]
