@@ -1,0 +1,291 @@
+{
+	"info": {
+		"_postman_id": "f222a90c-81a6-4ff2-a3cd-98364eed7703",
+		"name": "Spotify_Like_tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "View user profile by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View playlists by user id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/user/:id/playlists",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								":id",
+								"playlists"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "60bed75483c2a1b68b302a98"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "artists",
+			"item": [
+				{
+					"name": "{artistid}",
+					"item": [
+						{
+							"name": "View artist by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/artists/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"artists",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View an artist's albums",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/artists/:id/albums",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"artists",
+										":id",
+										"albums"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "60bed7a883c2a1b68b302a9b"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "View all artists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/artists",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"artists"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "albums",
+			"item": [
+				{
+					"name": "View album by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/albums/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"albums",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "playlists",
+			"item": [
+				{
+					"name": "{playlistid}",
+					"item": [
+						{
+							"name": "Add or Remove song from playlist",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"action\": \"add\",\n    \"song\": \"song ObjectId goes here\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/playlists/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"playlists",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete playlist with specified id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/playlists/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"playlists",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "placeHolderPlaylistId",
+											"description": "The ObjectId of the playlist to be deleted goes here."
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Create new playlist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userid\": \"60bed75483c2a1b68b302a98\",\n    \"name\": \"My First Playlist\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/playlists",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"playlists"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "songs",
+			"item": [
+				{
+					"name": "Play a song by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/songs/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"songs",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

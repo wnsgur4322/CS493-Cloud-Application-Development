@@ -6,6 +6,9 @@ node_modules/
 ./graphql-api-server/node_modules/
 ./assignments/*/node_modules/
 ./assignments/*/uploads/
+./assignments/*/api/uploads/
 ./using-mongodb/node_modules/
 ./using-mysql/node_modules/
 ./auth/node_modules/
+./final-project-cs493-group21/node_modules/
+./final-project-cs493-group21/api/uploads/
